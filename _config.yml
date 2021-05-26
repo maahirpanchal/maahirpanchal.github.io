@@ -16,7 +16,7 @@ resume: true
 resume-external: false
 resume-url:
 
-url: maahir.space
+url: https://maahirpanchal.github.io
 # your url: https://USERNAME.github.io
 
 permalink: /:title/

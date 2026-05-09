@@ -1,0 +1,286 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import { headerData } from '~/navigation';
+import IndustriesMarquee from '~/components/widgets/IndustriesMarquee.astro';
+
+import logoONGC from '~/assets/images/client_logos/ongl.jpg';
+import logoInoxCVA from '~/assets/images/client_logos/inoxcva.png.webp';
+import logoEnergypack from '~/assets/images/client_logos/energypack.png';
+import logoAtul from '~/assets/images/client_logos/atul.png';
+import logoSarabhai from '~/assets/images/client_logos/sarabhai.png';
+import logoPratik from '~/assets/images/client_logos/pratik.jpg';
+import logoWalchandnagar from '~/assets/images/client_logos/walchandnagar.png';
+import logoGSFC from '~/assets/images/client_logos/gsfc.png';
+import logoISRO from '~/assets/images/client_logos/isro.png';
+import logoBARC from '~/assets/images/client_logos/barc.png';
+
+const metadata = {
+  title: 'Arun Iron Works — Heavy Fabrication & Process Equipment, Vadodara',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+
+  <Header slot="header" {...headerData} isSticky position="right" />
+
+  <style is:global>
+    /* Pre-scroll only: white top-level nav links over the dark hero */
+    #header:not(.scroll) nav > ul > li > a,
+    #header:not(.scroll) nav > ul > li > button {
+      color: white;
+    }
+    #header:not(.scroll) nav > ul > li > a:hover,
+    #header:not(.scroll) nav > ul > li > button:hover {
+      color: rgb(204 85 0);
+    }
+    /* Dropdown has white bg — keep its links dark */
+    #header:not(.scroll) .dropdown-menu a {
+      color: rgb(16 16 16);
+    }
+    #header:not(.scroll) .dropdown-menu a:hover {
+      color: rgb(204 85 0);
+    }
+  </style>
+
+  <!-- Hero — full bleed background image with text overlay -->
+
+  <section class="relative md:-mt-[76px] not-prose min-h-[88vh] flex items-end">
+    <div class="absolute inset-0 overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1726731782158-fcf6822b6ca4?q=80&w=1828&auto=format&fit=crop"
+        alt="Heavy industrial fabrication"
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <!-- top vignette keeps header text readable; bottom vignette anchors the heading -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+    </div>
+    <div class="relative w-full container-site pb-20 md:pb-28">
+      <h1 class="font-heading text-white text-6xl sm:text-7xl md:text-8xl font-bold mb-5 leading-none tracking-wide uppercase">
+        Heavy<br />Fabrication.<br />
+        <span class="text-accent">Since 1957.</span>
+      </h1>
+      <p class="text-gray-200 text-lg md:text-xl max-w-xl leading-relaxed">
+        Process vessels, heat exchangers, and formed components for regulated industries.
+        Vadodara, Gujarat.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats ****************** -->
+
+  <section class="py-12 md:py-16 border-b border-gray-100 dark:border-gray-700/50">
+    <div class="container-site">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        {[
+          { amount: '68+',     label: 'Years in Operation' },
+          { amount: '10,000+', label: 'Sq. Ft. Shop Floor' },
+          { amount: '10T',     label: 'Max Lift Capacity' },
+          { amount: '8',       label: 'Industries Served' },
+        ].map(({ amount, label }) => (
+          <div class="border-t-3 border-accent pt-5">
+            <div class="font-heading text-5xl md:text-6xl font-bold text-gray-900 dark:text-white leading-none">
+              {amount}
+            </div>
+            <div class="text-xs font-bold tracking-widest uppercase text-gray-400 mt-3">
+              {label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800/30">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div>
+          <p class="label-eyebrow mb-4">Established 1957</p>
+          <h2 class="font-heading text-4xl md:text-5xl font-bold leading-tight">
+            A fabrication company built on decades of shop-floor discipline
+          </h2>
+          <p class="text-gray-500 dark:text-gray-400 mt-6 text-lg leading-relaxed">
+            Trusted by plant operators and EPCs across regulated industries. We combine decades of forming and fabrication know-how with inspection-ready manufacturing practices — for clients who need repeatable quality and schedule certainty.
+          </p>
+        </div>
+        <div class="space-y-8">
+          {[
+            {
+              title: 'Forming, welding, and assembly under one roof',
+              description: 'In-house integration minimises interfaces between trades, reduces lead times, and improves dimensional integrity across every finished component.',
+            },
+            {
+              title: 'Manufacturability reviewed before production begins',
+              description: 'Client drawings are assessed for forming sequence, weld strategy, and tolerances — practical inputs provided early to avoid rework downstream.',
+            },
+            {
+              title: 'Conservative execution, not speculative capacity',
+              description: 'We commit to what we can deliver. Staged fabrication and dispatch planning ensures schedule adherence and safe handling on every order.',
+            },
+          ].map(({ title, description }) => (
+            <div class="border-l-3 border-accent pl-6">
+              <h3 class="font-heading text-lg font-bold mb-2">{title}</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Build — image card grid -->
+
+  <section class="py-16 md:py-20">
+    <div class="container-site">
+      <div class="mb-12">
+        <p class="label-eyebrow mb-2">Equipment</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold">What We Build</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { title: 'Pressure Vessels',  tagline: 'Process Equipment', href: '/services#pressure-vessels', img: 'https://thumbs.dreamstime.com/b/industrial-pressure-vessel-tank-valves-gauges-large-cylindrical-industrial-pressure-vessel-tank-made-metal-427176734.jpg' },
+          { title: 'Heat Exchangers',   tagline: 'Process Equipment', href: '/services#heat-exchangers',  img: 'https://media.istockphoto.com/id/1207935850/photo/tube-heat-exchanger.jpg?s=612x612&w=0&k=20&c=RodnR9CJptGZomM5A9DXzfHlM8y6aiQEWYttfUqZHSc=' },
+          { title: 'Columns & Reactors',tagline: 'Process Equipment', href: '/services#columns-reactors', img: 'https://thumbs.dreamstime.com/b/industrial-columns-2472159.jpg' },
+          { title: 'Pharma Equipment',  tagline: 'Pharmaceutical',    href: '/services#pharma-equipment', img: 'https://thumbs.dreamstime.com/b/pharmaceutical-laboratory-equipment-13305275.jpg' },
+          { title: 'Shell Rolling',     tagline: 'Forming',           href: '/services#shell-rolling',    img: 'https://www.nssco.com/assets/images/content/plate_rolling_largecyl.jpg' },
+        ].map(({ title, tagline, href, img }) => (
+          <a href={href} class="card-image group">
+            <img
+              src={img}
+              alt={title}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors duration-300"></div>
+            <div class="absolute inset-0 flex items-end p-6">
+              <div>
+                <p class="label-eyebrow mb-1">{tagline}</p>
+                <h3 class="font-heading text-xl font-bold text-white leading-snug">{title}</h3>
+              </div>
+            </div>
+          </a>
+        ))}
+        <a href="/services" class="group relative block aspect-[4/3] bg-accent hover:bg-accent/90 transition-colors overflow-hidden">
+          <div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+            <p class="text-xs font-bold tracking-widest text-white/70 uppercase mb-1">Full list</p>
+            <h3 class="font-heading text-xl font-bold text-white leading-snug">View All Capabilities &rarr;</h3>
+          </div>
+        </a>
+    </div>
+  </section>
+
+  <IndustriesMarquee />
+
+  <!-- Clients -->
+
+  <section class="py-16 border-y border-gray-100 dark:border-gray-700/50">
+    <div class="container-site">
+      <p class="text-sm font-bold tracking-widest text-gray-400 uppercase text-center mb-12">Clients We've Worked With</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-10">
+        {[
+          { name: 'ONGC',                    logo: logoONGC.src },
+          { name: 'L&T',                     logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/Larsen%26Toubro_logo.svg/250px-Larsen%26Toubro_logo.svg.png' },
+          { name: 'InoxCVA',                 logo: logoInoxCVA.src },
+          { name: 'Welspun Michigan',        logo: 'https://www.welspunmichigan.com/img/welspun-michigan-logo.png' },
+          { name: 'Jaypee Group',            logo: 'https://upload.wikimedia.org/wikipedia/en/4/46/Jaypee_Group_Logo.svg' },
+          { name: 'Alembic Chemical Works',  logo: 'https://alembicpharmaceuticals.com/assets/img/Alembic-logo.png' },
+          { name: 'Energypack Boilers',      logo: logoEnergypack.src },
+          { name: 'Pratik Wire & Cable',     logo: logoPratik.src },
+          { name: 'Exal / RNR Machines',     logo: 'https://rnrmachines.com/wp-content/uploads/2019/02/RNR-header-logo.png' },
+          { name: 'GSFC Ltd',                logo: logoGSFC.src },
+          { name: 'Atul Ltd',                logo: logoAtul.src },
+          { name: 'Walchandnagar Industries', logo: logoWalchandnagar.src },
+          { name: 'Synbiotics Ltd',          logo: 'https://3.imimg.com/data3/AV/AP/MY-4729436/synbiotics-limited-logo-120x120.png' },
+          { name: 'Sarabhai Chemicals',      logo: logoSarabhai.src },
+          { name: 'ISRO',                    logo: logoISRO.src },
+          { name: 'BARC',                    logo: logoBARC.src },
+          { name: 'Cryogas Industries',      logo: 'https://cryogasindustries.com/images/logo.png', cls: 'max-h-9' },
+        ].map(({ name, logo, cls }) => (
+          <div class="flex items-center justify-center h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+            {logo ? (
+              <>
+                <img
+                  src={logo}
+                  alt={name}
+                  class={`${cls ?? 'max-h-14'} max-w-[160px] w-auto object-contain`}
+                  onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')"
+                />
+                <span hidden class="text-sm font-bold tracking-widest uppercase text-gray-400">{name}</span>
+              </>
+            ) : (
+              <span class="text-sm font-bold tracking-widest uppercase text-gray-400">{name}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Infrastructure ********* -->
+
+  <section class="py-20">
+    <div class="container-site">
+      <div class="mb-14">
+        <p class="label-eyebrow mb-3">Infrastructure</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold">Manufacturing facility, Vadodara</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 dark:bg-gray-700 border border-gray-200 dark:border-gray-700">
+        <div class="bg-white dark:bg-slate-900 p-8">
+          <p class="label-eyebrow mb-4">Floor Space</p>
+          <h3 class="font-heading text-2xl font-bold mb-3">10,000+ sq. ft. fabrication sheds</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Allied Pharma Compound, Dabhoi Road, Pratapnagar, Vadodara. Layout designed for medium-to-heavy fabrication and continuous workflow.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-8">
+          <p class="label-eyebrow mb-4">Lifting</p>
+          <h3 class="font-heading text-2xl font-bold mb-3">Material handling up to 10 tonnes</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">10T and 5T electric gantry cranes in-house; mobile cranes for site lifts and dispatch.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-8">
+          <p class="label-eyebrow mb-4">Rolling</p>
+          <h3 class="font-heading text-2xl font-bold mb-3">Rolling to 36mm / 3000mm width</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Four in-house bending machines (4–20mm / 2500mm). Extended to 36mm / 3000mm at associate works, Makarpura GIDC.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-8">
+          <p class="label-eyebrow mb-4">Inspection</p>
+          <h3 class="font-heading text-2xl font-bold mb-3">Third-party NDT & hydro-test</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">UT, RT, DP via empanelled TPI agencies; TPIA witness available on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
+  <section id="contact" class="py-24 md:py-32 border-t border-gray-200">
+    <div class="container-site">
+      <div class="mb-14">
+        <p class="label-eyebrow mb-4">Contact</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 leading-snug max-w-lg">
+          Discuss your fabrication requirement
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16">
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-widest mb-4">Phone & WhatsApp</p>
+          <a href="tel:+918849614126" class="font-heading font-bold text-2xl text-gray-900 hover:text-accent transition-colors block mb-2">+91 88496 14126</a>
+          <a href="https://wa.me/918849614126" target="_blank" rel="noopener" class="text-sm text-gray-400 hover:text-accent transition-colors">Open WhatsApp &rarr;</a>
+        </div>
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-widest mb-4">Email</p>
+          <a href="mailto:arunironworks@outlook.com" class="font-heading font-semibold text-lg text-gray-900 hover:text-accent transition-colors break-all">arunironworks@outlook.com</a>
+        </div>
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-widest mb-4">Works</p>
+          <address class="not-italic text-gray-600 text-sm leading-relaxed mb-2">Allied Pharma Compound, Zenith School Char Rasta, Dabhoi Road, Pratapnagar, Vadodara – 390 004, Gujarat</address>
+          <a href="https://share.google/jNIq0GGX9Np1uaGeS" target="_blank" rel="noopener" class="text-sm text-gray-400 hover:text-accent transition-colors">Get directions &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

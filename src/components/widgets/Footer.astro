@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from 'astrowind:config';
+import { getHomePermalink } from '~/utils/permalinks';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+interface Links {
+  title?: string;
+  links: Array<Link>;
+}
+
+export interface Props {
+  links: Array<Links>;
+  secondaryLinks: Array<Link>;
+  socialLinks: Array<Link>;
+  footNote?: string;
+  theme?: string;
+}
+
+const { secondaryLinks = [], links = [], footNote = '' } = Astro.props;
+---
+
+<footer class="bg-gray-50 dark:bg-slate-900 border-t border-gray-200 dark:border-slate-700 not-prose">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-14 md:py-16">
+
+      <!-- Brand + contact -->
+      <div class="lg:col-span-4">
+        <a href={getHomePermalink()} class="font-heading font-bold text-lg tracking-wide text-gray-900 dark:text-white uppercase block mb-1">
+          {SITE?.name}
+        </a>
+        <p class="text-xs text-accent font-bold tracking-widest uppercase mb-6">Heavy Fabrication. Since 1957.</p>
+        <a href="https://share.google/jNIq0GGX9Np1uaGeS" target="_blank" rel="noopener" class="not-italic text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5 hover:text-accent transition-colors block">
+          Allied Pharma Compound<br />
+          Zenith School Char Rasta, Dabhoi Road<br />
+          Pratapnagar, Vadodara – 390 004<br />
+          Gujarat, India
+        </a>
+        <div class="space-y-2 text-sm">
+          <a href="tel:+918849614126" class="flex items-center gap-2 text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-white transition-colors">
+            <Icon name="tabler:phone" class="w-4 h-4 shrink-0" />
+            +91 88496 14126
+          </a>
+          <a href="mailto:arunironworks@outlook.com" class="flex items-center gap-2 text-gray-500 hover:text-accent dark:text-gray-400 dark:hover:text-white transition-colors">
+            <Icon name="tabler:mail" class="w-4 h-4 shrink-0" />
+            arunironworks@outlook.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav link columns -->
+      <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+        {links.map(({ title, links: colLinks }) => (
+          <div>
+            <p class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-4">{title}</p>
+            <ul class="space-y-2.5">
+              {colLinks && colLinks.map(({ text, href }) => (
+                <li>
+                  <a href={href} class="text-sm text-gray-500 dark:text-gray-400 hover:text-accent dark:hover:text-white transition-colors">
+                    <Fragment set:html={text} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-gray-200 dark:border-gray-700 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <p class="text-xs text-gray-400">
+        <Fragment set:html={footNote} />
+      </p>
+      <div class="flex gap-5">
+        {secondaryLinks.map(({ text, href }) => (
+          <a href={href} class="text-xs text-gray-400 hover:text-accent transition-colors">
+            <Fragment set:html={text} />
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</footer>

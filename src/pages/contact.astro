@@ -1,0 +1,78 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Contact',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText tagline="Contact" title="Get in Touch" subtitle="Have a fabrication requirement? We'd love to hear about your project." />
+
+  <ContactUs
+    id="form"
+    title="Send us your enquiry"
+    subtitle="Describe your requirement and we'll get back to you within one business day."
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+      },
+      {
+        type: 'text',
+        name: 'company',
+        label: 'Company / Organisation',
+      },
+      {
+        type: 'tel',
+        name: 'phone',
+        label: 'Phone',
+      },
+    ]}
+    textarea={{
+      label: 'Project details',
+      placeholder: 'Describe your requirement — material (e.g. SS 316L, CS), approximate dimensions, quantity, and whether IBR compliance is required.',
+      rows: 6,
+    }}
+    disclaimer={{
+      label:
+        'By submitting this form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="We typically respond within one business day."
+  />
+
+  <Features2
+    title="Reach us directly"
+    items={[
+      {
+        title: 'Phone',
+        description: '+91 88496 14126',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Email',
+        description: 'arunironworks@outlook.com',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Works',
+        description: 'Allied Pharma Compound, Zenith School Char Rasta, Dabhoi Road, Pratapnagar, Vadodara – 390 004, Gujarat, India',
+        icon: 'tabler:map-pin',
+        callToAction: {
+          text: 'Get directions',
+          href: 'https://share.google/jNIq0GGX9Np1uaGeS',
+          target: '_blank',
+        },
+      },
+    ]}
+  />
+</Layout>

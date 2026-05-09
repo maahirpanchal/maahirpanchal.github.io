@@ -1,0 +1,229 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import { headerData } from '~/navigation';
+import IndustriesMarquee from '~/components/widgets/IndustriesMarquee.astro';
+
+const metadata = {
+  title: 'Services',
+};
+
+const services = [
+  {
+    id: 'pressure-vessels',
+    tagline: 'Process Equipment',
+    title: 'Pressure Vessels',
+    image: 'https://thumbs.dreamstime.com/b/industrial-pressure-vessel-tank-valves-gauges-large-cylindrical-industrial-pressure-vessel-tank-made-metal-427176734.jpg',
+    specs: [
+      { title: 'Vertical and horizontal designs', description: 'Jacketed vessels, limpet-coil vessels, and dished-end tanks fabricated to client drawings and ASME / IS codes as applicable.' },
+      { title: 'Materials: CS, SS 304 / 316 / 316L', description: 'Pressure-grade carbon steel and stainless steel as standard. Duplex and non-ferrous on project basis.' },
+      { title: 'IBR compliance facilitated', description: 'Third-party inspection and IBR documentation coordinated for boiler and statutory pressure vessel requirements.' },
+    ],
+  },
+  {
+    id: 'heat-exchangers',
+    tagline: 'Process Equipment',
+    title: 'Heat Exchangers',
+    image: 'https://media.istockphoto.com/id/1207935850/photo/tube-heat-exchanger.jpg?s=612x612&w=0&k=20&c=RodnR9CJptGZomM5A9DXzfHlM8y6aiQEWYttfUqZHSc=',
+    specs: [
+      { title: 'Shell & tube, finned tube, double-pipe', description: 'Suitable for condensers, reboilers, coolers, and heaters in continuous process plants.' },
+      { title: 'Carbon steel and stainless steel', description: 'SS 304, 316, 316L for corrosive services. CS for standard process duties.' },
+      { title: 'Fixed tubesheet, floating head, U-tube', description: 'Multiple configurations built to client specification and TEMA standards on request.' },
+    ],
+  },
+  {
+    id: 'columns-reactors',
+    tagline: 'Process Equipment',
+    title: 'Columns & Reactors',
+    image: 'https://thumbs.dreamstime.com/b/industrial-columns-2472159.jpg',
+    specs: [
+      { title: 'Distillation and absorption columns', description: 'Tall vertical vessels with internal tray or packing support for chemical, fertilizer, and petrochemical plants.' },
+      { title: 'Reaction vessels and agitated reactors', description: 'Fabricated to process datasheets with nozzle orientations, agitator mountings, and jacket arrangements.' },
+      { title: 'Multi-material construction', description: 'CS, SS 304/316, and clad plate combinations depending on service conditions and client specification.' },
+    ],
+  },
+  {
+    id: 'storage-tanks',
+    tagline: 'Storage',
+    title: 'Storage Tanks',
+    image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80',
+    specs: [
+      { title: 'Buffer, oxygen, and nitrogen tanks', description: 'General industrial liquid and gas storage vessels fabricated to client capacity and pressure requirements.' },
+      { title: 'Carbon steel and stainless steel', description: 'CS for standard storage. SS 304/316L for corrosive, food-grade, or hygienic applications.' },
+      { title: 'Variety of capacities and orientations', description: 'Vertical and horizontal tanks with full nozzle, manway, and access requirements built in.' },
+    ],
+  },
+  {
+    id: 'vacuum-vessels',
+    tagline: 'Process Equipment',
+    title: 'Vacuum Vessels & Jacketed Storage',
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80',
+    specs: [
+      { title: 'Vacuum-rated vessels', description: 'Fabricated for processes operating below atmospheric pressure — distillation, vacuum drying, and degassing applications.' },
+      { title: 'Jacketed and limpet-coil designs', description: 'External heating and cooling via full jackets or limpet coils for temperature-controlled storage and process vessels.' },
+      { title: 'SS 304 / 316 / 316L and carbon steel', description: 'Material selected to vacuum rating, service fluid, and temperature requirements. Documentation provided to client spec.' },
+    ],
+  },
+  {
+    id: 'pharma-equipment',
+    tagline: 'Pharmaceutical',
+    title: 'Pharma Equipment',
+    image: 'https://thumbs.dreamstime.com/b/pharmaceutical-laboratory-equipment-13305275.jpg',
+    specs: [
+      { title: 'GMP-compliant vessels and reactors', description: 'Fabricated in SS 316L with crevice-free welds, electropolished or mirror-polished internals as required.' },
+      { title: 'Hygienic design', description: 'Full-drain slope, sanitary nozzles, and surface finish standards suited to pharmaceutical and biotech applications.' },
+      { title: 'Documentation support', description: 'Material test reports, weld records, and inspection certificates provided for GMP audit trails.' },
+    ],
+  },
+  {
+    id: 'shell-rolling',
+    tagline: 'Forming',
+    title: 'Shell Rolling & Formed Components',
+    image: 'https://www.nssco.com/assets/images/content/plate_rolling_largecyl.jpg',
+    specs: [
+      { title: 'Cylindrical shells, cones, and dished ends', description: 'In-house rolling and forming on four plate bending machines covering 4mm to 20mm thickness.' },
+      { title: 'Extended capacity via associate works', description: 'Plates up to 36mm thickness and 3000mm width rolled at Makarpura GIDC facility, Vadodara.' },
+      { title: 'MS and SS plate forming', description: 'Both carbon steel and stainless steel formed components produced to dimensional drawings.' },
+    ],
+  },
+  {
+    id: 'wtp-etp',
+    tagline: 'Water Treatment',
+    title: 'WTP / ETP Systems',
+    image: 'https://4.imimg.com/data4/NB/WY/MY-21382251/operation-500x500.jpg',
+    specs: [
+      { title: 'Tanks, filter vessels, and clarifiers', description: 'Fabricated steel components for water treatment plants and effluent treatment plants.' },
+      { title: 'Structural skids and supports', description: 'Skid-mounted assemblies and structural steelwork for packaged WTP/ETP installations.' },
+      { title: 'CS and SS construction', description: 'Material selection matched to treatment chemistry — CS for standard duty, SS for aggressive effluent service.' },
+    ],
+  },
+  {
+    id: 'industrial-chimneys',
+    tagline: 'Structural',
+    title: 'Industrial Chimneys',
+    image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1000&q=80',
+    specs: [
+      { title: 'Fabricated steel exhaust stacks', description: 'Self-supporting and guyed chimneys for boilers, furnaces, generators, and process plant exhausts.' },
+      { title: 'Various diameters and heights', description: 'Designed to client specifications. Flange joints, access doors, and ladder attachments fabricated as required.' },
+      { title: 'Carbon steel construction', description: 'IS 2062 grade mild steel with appropriate surface preparation and coating for outdoor service.' },
+    ],
+  },
+];
+---
+
+<Layout metadata={metadata}>
+
+  <Header slot="header" {...headerData} isSticky position="right" />
+
+  <style is:global>
+    #header:not(.scroll) nav > ul > li > a,
+    #header:not(.scroll) nav > ul > li > button {
+      color: white;
+    }
+    #header:not(.scroll) nav > ul > li > a:hover,
+    #header:not(.scroll) nav > ul > li > button:hover {
+      color: rgb(204 85 0);
+    }
+    #header:not(.scroll) .dropdown-menu a {
+      color: rgb(16 16 16);
+    }
+    #header:not(.scroll) .dropdown-menu a:hover {
+      color: rgb(204 85 0);
+    }
+  </style>
+
+  <!-- Page hero -->
+
+  <section class="relative md:-mt-[76px] not-prose py-28 md:py-40 bg-gray-900 text-white">
+    <div class="container-site">
+      <p class="label-eyebrow mb-4">Services</p>
+      <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl font-bold leading-none tracking-wide uppercase mb-6">
+        Custom Fabrication<br /><span class="text-accent">For Process Industries</span>
+      </h1>
+      <p class="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed">
+        From single pressure vessels to complete skid-mounted systems — built to your drawings, your specifications, and your timeline.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service sections -->
+
+  {services.map((service, i) => (
+    <section
+      id={service.id}
+      class="py-14 md:py-20 border-b border-gray-100 dark:border-gray-700/50"
+    >
+      <div class="container-site">
+        <div class={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${i % 2 !== 0 ? 'lg:[&>*:first-child]:order-last' : ''}`}>
+          <div>
+            <p class="label-eyebrow mb-3">{service.tagline}</p>
+            <h2 class="font-heading text-3xl md:text-4xl font-bold leading-tight mb-8">{service.title}</h2>
+            <div class="space-y-6">
+              {service.specs.map(({ title, description }, j) => (
+                <div>
+                  <p class="text-accent text-xs font-bold tracking-widest mb-1">{String(j + 1).padStart(2, '0')}</p>
+                  <h3 class="font-heading text-sm font-bold mb-1">{title}</h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src={service.image}
+              alt={service.title}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Materials & capabilities -->
+
+  <section class="py-16 md:py-20 bg-gray-50 dark:bg-slate-800/30">
+    <div class="container-site">
+      <div class="mb-12">
+        <p class="label-eyebrow mb-3">Capabilities</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold">Materials & processes</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 dark:bg-gray-700 border border-gray-200 dark:border-gray-700">
+        {[
+          { label: 'Carbon & Mild Steel', body: 'IS 2062, IS 516 grades for general industrial fabrication and structural applications.' },
+          { label: 'Stainless Steel', body: 'SS 304, 316, and 316L for corrosion-resistant and hygienic applications.' },
+          { label: 'Non-Ferrous Metals', body: 'Copper, brass, and aluminium for heat exchangers and specialised process equipment.' },
+          { label: 'Welding Processes', body: 'SMAW, GTAW (TIG), and GMAW (MIG) performed by experienced in-house welders.' },
+          { label: 'Plate Cutting', body: 'CNC plasma and gas cutting for complex profiles, nozzle openings, and precise blanks.' },
+          { label: 'Shell Rolling', body: 'In-house rolling for cylindrical shells across a wide range of diameters and wall thicknesses.' },
+          { label: 'Lifting', body: '10T and 5T electric gantry cranes for safe handling throughout the shop and at dispatch.' },
+          { label: 'NDT & Hydro-test', body: 'UT, RT, and dye-penetrant NDT via empanelled TPI agencies. TPIA witness available on request.' },
+        ].map(({ label, body }) => (
+          <div class="card-tile">
+            <p class="label-eyebrow mb-3">{label}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <IndustriesMarquee />
+
+  <!-- CTA -->
+
+  <section class="py-20 md:py-28 bg-orange-50 dark:bg-slate-900">
+    <div class="container-site">
+      <p class="label-eyebrow mb-3">Get in Touch</p>
+      <h2 class="font-heading text-4xl md:text-5xl font-bold mb-4">Ready to discuss your project?</h2>
+      <p class="text-gray-500 dark:text-gray-400 mb-8 max-w-xl text-lg">
+        Send us your drawings or a brief description and we'll respond within one business day.
+      </p>
+      <a href="/#contact" class="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white font-bold text-sm px-8 py-4 tracking-widest uppercase transition-colors">
+        Get in Touch &rarr;
+      </a>
+    </div>
+  </section>
+
+</Layout>

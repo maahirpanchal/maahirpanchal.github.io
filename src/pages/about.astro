@@ -1,0 +1,145 @@
+---
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'About Us',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="About Arun Iron Works"
+    image={{
+      src: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2070&q=80',
+      alt: 'Heavy fabrication workshop',
+    }}
+  >
+    <Fragment slot="title">
+      Heavy fabrication expertise <br />
+      <span class="text-accent dark:text-white">since 1957</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Arun Iron Works is a Vadodara-based heavy fabrication shop with over six decades of experience building
+      pressure vessels, heat exchangers, columns, and custom process equipment for regulated industries across India.
+    </Fragment>
+  </Hero>
+
+  <Stats
+    title="By the numbers"
+    stats={[
+      { title: 'Years in operation', amount: '68+' },
+      { title: 'Sq ft shop floor', amount: '10K' },
+      { title: 'Crane capacity', amount: '10T' },
+      { title: 'Industries served', amount: '8' },
+    ]}
+  />
+
+  <Features3
+    title="What we do"
+    subtitle="We fabricate custom process equipment for demanding industrial environments — from single-piece prototypes to repeat production runs."
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'Pressure Vessels',
+        description:
+          'Custom-fabricated vessels designed and built to client specifications, including high-pressure and jacketed designs.',
+        icon: 'tabler:cylinder',
+      },
+      {
+        title: 'Heat Exchangers',
+        description:
+          'Shell & tube and finned tube heat exchangers in carbon steel, stainless steel, and non-ferrous materials.',
+        icon: 'tabler:wave-saw-tool',
+      },
+      {
+        title: 'Columns & Reactors',
+        description:
+          'Distillation columns, reaction vessels, and agitated vessels for chemical and petrochemical processes.',
+        icon: 'tabler:separator-vertical',
+      },
+      {
+        title: 'Pharma Equipment',
+        description:
+          'GMP-compliant SS fabrication for pharmaceutical and biotech applications with mirror-polished internals.',
+        icon: 'tabler:flask',
+      },
+      {
+        title: 'Plate Bending & Shell Rolling',
+        description:
+          'In-house rolling of cylindrical shells and formed heads for a wide range of diameters and thicknesses.',
+        icon: 'tabler:circle-dashed',
+      },
+      {
+        title: 'WTP / ETP Systems',
+        description:
+          'Fabrication of tanks, clarifiers, filter vessels, and structural components for water and effluent treatment plants.',
+        icon: 'tabler:droplet',
+      },
+    ]}
+  />
+
+  <Steps2
+    title="How we work"
+    subtitle="We take a conservative, process-driven approach to every project — from initial review to final dispatch."
+    items={[
+      {
+        title: 'Manufacturability review',
+        description:
+          'Before cutting metal, we review every drawing for fit, weld access, and material compatibility. We flag issues early so rework stays off the shop floor.',
+      },
+      {
+        title: 'In-house fabrication',
+        description:
+          'Rolling, cutting, welding, and testing all happen under one roof. We do not sub-contract critical operations, which means tighter quality control and faster turnaround.',
+      },
+      {
+        title: 'Conservative execution',
+        description:
+          'We bias toward over-engineering where it matters — weld quality, joint geometry, and surface finish — rather than chasing the cheapest build cost.',
+      },
+    ]}
+  />
+
+  <Features2
+    title="Our facility"
+    tagline="Vadodara, Gujarat"
+    columns={3}
+    items={[
+      {
+        title: '10,000 sq ft shop floor',
+        description: 'Covered fabrication bay with dedicated rolling, welding, and assembly areas.',
+        icon: 'tabler:building-warehouse',
+      },
+      {
+        title: '10-ton EOT crane',
+        description: 'Overhead crane for safe handling of heavy fabrications throughout the shop.',
+        icon: 'tabler:crane',
+      },
+      {
+        title: 'Allied Pharma Compound, Dabhoi Road',
+        description: 'Zenith School Char Rasta, Pratapnagar, Vadodara. Accessible from Vadodara city with road freight access for dispatch.',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Have a fabrication requirement?"
+    subtitle="Tell us about your project and we'll get back to you within one business day."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Contact us',
+        href: '/contact',
+      },
+    ]}
+  />
+</Layout>

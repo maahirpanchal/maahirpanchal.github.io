@@ -1,0 +1,95 @@
+---
+const industries = [
+  {
+    name: 'Pharmaceuticals',
+    image: 'https://janakengineers.com/industry/pharma.jpg',
+    items: ['Fermentors & reactors', 'GMP SS vessels', 'Dryers & evaporators'],
+  },
+  {
+    name: 'Chemicals',
+    image: 'https://janakengineers.com/industry/chemical.jpg',
+    items: ['Process vessels', 'Agitated reactors', 'Storage tanks'],
+  },
+  {
+    name: 'Fertilizers',
+    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=600&q=80',
+    items: ['Absorption columns', 'Reaction vessels', 'Heat exchangers'],
+  },
+  {
+    name: 'Petrochemicals',
+    image: 'https://janakengineers.com/industry/petrochemical.jpg',
+    items: ['Distillation columns', 'High-pressure vessels', 'Separators'],
+  },
+  {
+    name: 'Refineries',
+    image: 'https://janakengineers.com/industry/refinery.jpg',
+    items: ['Pressure vessels', 'Distillation columns', 'Heat exchangers'],
+  },
+  {
+    name: 'Power Generation',
+    image: 'https://janakengineers.com/industry/power-industry.jpg',
+    items: ['Pressure vessels', 'Heat exchangers', 'Structural fabrication'],
+  },
+  {
+    name: 'Water Treatment',
+    image: 'https://images.unsplash.com/photo-1538300342682-cf57afb97285?auto=format&fit=crop&w=600&q=80',
+    items: ['Filter vessels', 'Clarifiers & tanks', 'ETP skids'],
+  },
+  {
+    name: 'Food Processing',
+    image: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=600&q=80',
+    items: ['Hygienic SS vessels', 'Mixing tanks', 'Evaporators'],
+  },
+  {
+    name: 'General Engineering',
+    image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80',
+    items: ['Custom fabrication', 'Plate bending', 'Structural assemblies'],
+  },
+];
+---
+
+<section class="py-16 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-10 text-center">
+    <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Industries</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Industries we serve</h2>
+  </div>
+
+  <div class="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+    <div class="marquee-track flex gap-5 w-max">
+      {[...industries, ...industries].map((industry) => (
+        <div
+          class="relative flex-none w-64 h-72 rounded-2xl overflow-hidden shadow-lg group"
+          style={`background-image: url('${industry.image}'); background-size: cover; background-position: center;`}
+        >
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 group-hover:from-black/90 transition-all duration-300" />
+          <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+            <h3 class="font-bold text-lg mb-2 leading-tight">{industry.name}</h3>
+            <ul class="space-y-1">
+              {industry.items.map((item) => (
+                <li class="text-sm text-gray-200 flex items-start gap-1.5">
+                  <span class="text-primary mt-0.5 text-xs">▸</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    animation: marquee 35s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>

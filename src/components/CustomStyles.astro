@@ -1,0 +1,64 @@
+---
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/700.css';
+import '@fontsource/oswald/500.css';
+import '@fontsource/oswald/700.css';
+---
+
+<style is:inline>
+  :root {
+    --aw-font-sans: 'IBM Plex Sans';
+    --aw-font-serif: 'IBM Plex Sans';
+    --aw-font-heading: 'Oswald';
+
+    --aw-color-primary: rgb(204 85 0);
+    --aw-color-secondary: rgb(170 68 0);
+    --aw-color-accent: rgb(204 85 0);
+
+    --aw-color-text-heading: rgb(0 0 0);
+    --aw-color-text-default: rgb(16 16 16);
+    --aw-color-text-muted: rgb(16 16 16 / 66%);
+    --aw-color-bg-page: rgb(255 255 255);
+
+    --aw-color-bg-page-dark: rgb(3 6 32);
+
+    ::selection {
+      background-color: rgb(204 85 0 / 20%);
+    }
+  }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .dark {
+    --aw-font-sans: 'IBM Plex Sans';
+    --aw-font-serif: 'IBM Plex Sans';
+    --aw-font-heading: 'Oswald';
+
+    --aw-color-primary: rgb(204 85 0);
+    --aw-color-secondary: rgb(170 68 0);
+    --aw-color-accent: rgb(204 85 0);
+
+    --aw-color-text-heading: rgb(247, 248, 248);
+    --aw-color-text-default: rgb(229 236 246);
+    --aw-color-text-muted: rgb(229 236 246 / 66%);
+    --aw-color-bg-page: rgb(3 6 32);
+
+    ::selection {
+      background-color: rgb(204 85 0 / 40%);
+      color: snow;
+    }
+  }
+</style>

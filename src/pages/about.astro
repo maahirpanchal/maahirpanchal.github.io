@@ -1,131 +1,160 @@
 ---
 import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
 import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
 
 const metadata = {
   title: 'About Us',
+  description:
+    'Arun Iron Works has manufactured pressure vessels and heat exchangers in Vadodara since 1957. Learn about our shop floor, capabilities, and team.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <Hero
-    tagline="About Arun Iron Works"
-    image={{
-      src: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2070&q=80',
-      alt: 'Heavy fabrication workshop',
-    }}
-  >
-    <Fragment slot="title">
-      Heavy fabrication expertise <br />
-      <span class="text-accent dark:text-white">since 1957</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Arun Iron Works is a Vadodara-based heavy fabrication shop with over six decades of experience building
-      pressure vessels, heat exchangers, columns, and custom process equipment for regulated industries across India.
-    </Fragment>
-  </Hero>
+  <section class="relative md:-mt-[76px] not-prose">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+      <div class="pt-10 md:pt-12 pb-4 md:pb-6 text-center max-w-5xl mx-auto">
+        <p class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase mb-3">
+          About Arun Iron Works
+        </p>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+          Heavy fabrication expertise <br />
+          <span class="text-accent dark:text-white">since 1957</span>
+        </h1>
+        <p class="text-xl text-muted dark:text-slate-300 max-w-3xl mx-auto">
+          Arun Iron Works is a heavy fabrication shop based in Pratapnagar, Vadodara. Founded in 1957,
+          the company has operated from the same location across four generations.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <Stats
     title="By the numbers"
+    classes={{ container: 'pt-4 md:pt-6 lg:pt-8' }}
     stats={[
       { title: 'Years in operation', amount: '68+' },
-      { title: 'Sq ft shop floor', amount: '10K' },
+      { title: 'Team strength', amount: '10' },
+      { title: 'Hydraulic press', amount: '200T' },
       { title: 'Crane capacity', amount: '10T' },
-      { title: 'Industries served', amount: '8' },
     ]}
   />
 
-  <Features3
-    title="What we do"
-    subtitle="We fabricate custom process equipment for demanding industrial environments — from single-piece prototypes to repeat production runs."
+  <!-- Company story -->
+  <section class="py-16 md:py-20">
+    <div class="container-site">
+      <div class="grid gap-8 md:grid-cols-2 lg:gap-12">
+        <div class="md:pt-8 lg:flex lg:flex-col lg:justify-center">
+          <p class="label-eyebrow mb-4">Our story</p>
+          <h2 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white sm:text-3xl md:mb-6">
+            Heavy fabrication since 1957
+          </h2>
+          <div class="space-y-4 text-gray-600 dark:text-slate-400 leading-relaxed sm:text-lg">
+            <p>
+              Past clients include ISRO, the Heavy Water Board (DAE), ONGC, Sarabhai Chemicals, and
+              Alembic. Current clients include INOXCVA and ONGC.
+            </p>
+            <p>
+              The company is currently led by the third generation, with the fourth generation
+              actively involved in operations and in modernising the shop's QA/QC, documentation,
+              and certification standards. The objective is to bring Arun Iron Works back to the
+              heavy fabrication and pressure-grade work the company was originally built for, with
+              execution standards that meet current EPC and OEM expectations.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="h-64 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
+            <img
+              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=900&q=80"
+              loading="lazy"
+              alt="Arun Iron Works shop floor"
+              class="h-full w-full object-cover object-center"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core capabilities -->
+  <section class="py-12 md:py-16 lg:py-20">
+    <div class="container-site">
+      <div class="mb-12 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white md:text-4xl">Core capabilities</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-muted">
+          Plate rolling, shell forming, dish ends, and heavy fabrication for industrial and pressure-grade applications.
+        </p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2">
+        {[
+          {
+            icon: 'tabler:circle-dashed',
+            title: 'Plate Rolling & Shell Forming',
+            description: '25mm × 3000mm rolling capacity for cylindrical shells across a wide range of diameters and material grades.',
+          },
+          {
+            icon: 'tabler:circle-half',
+            title: 'Dish Ends & Formed Heads',
+            description: 'In-house forming of dish ends and hemispherical heads using 200-ton hydraulic presses.',
+          },
+          {
+            icon: 'tabler:cylinder',
+            title: 'Pressure Vessel Fabrication',
+            description: 'Custom vessels built to client drawings including high-pressure, jacketed, and lined designs for regulated industries.',
+          },
+          {
+            icon: 'tabler:wave-saw-tool',
+            title: 'Heat Exchangers',
+            description: 'Shell & tube heat exchangers in carbon steel, stainless steel, and non-ferrous materials.',
+          },
+        ].map(({ icon, title, description }) => (
+          <div class="flex flex-col items-center rounded-xl border border-gray-100 p-8 text-center dark:border-slate-700">
+            <Icon name={icon} class="mb-4 h-10 w-10 text-primary" />
+            <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+            <p class="text-muted">{description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Features2
+    title="Fabrication equipment"
+    tagline="Pratapnagar, Vadodara"
     columns={3}
-    isBeforeContent={true}
     items={[
       {
-        title: 'Pressure Vessels',
-        description:
-          'Custom-fabricated vessels designed and built to client specifications, including high-pressure and jacketed designs.',
-        icon: 'tabler:cylinder',
-      },
-      {
-        title: 'Heat Exchangers',
-        description:
-          'Shell & tube and finned tube heat exchangers in carbon steel, stainless steel, and non-ferrous materials.',
-        icon: 'tabler:wave-saw-tool',
-      },
-      {
-        title: 'Columns & Reactors',
-        description:
-          'Distillation columns, reaction vessels, and agitated vessels for chemical and petrochemical processes.',
-        icon: 'tabler:separator-vertical',
-      },
-      {
-        title: 'Pharma Equipment',
-        description:
-          'GMP-compliant SS fabrication for pharmaceutical and biotech applications with mirror-polished internals.',
-        icon: 'tabler:flask',
-      },
-      {
-        title: 'Plate Bending & Shell Rolling',
-        description:
-          'In-house rolling of cylindrical shells and formed heads for a wide range of diameters and thicknesses.',
+        title: '25mm × 3000mm plate rolling',
+        description: 'In-house plate rolling machine for cylindrical shells up to 3000mm width and 25mm thickness.',
         icon: 'tabler:circle-dashed',
       },
       {
-        title: 'WTP / ETP Systems',
-        description:
-          'Fabrication of tanks, clarifiers, filter vessels, and structural components for water and effluent treatment plants.',
-        icon: 'tabler:droplet',
-      },
-    ]}
-  />
-
-  <Steps2
-    title="How we work"
-    subtitle="We take a conservative, process-driven approach to every project — from initial review to final dispatch."
-    items={[
-      {
-        title: 'Manufacturability review',
-        description:
-          'Before cutting metal, we review every drawing for fit, weld access, and material compatibility. We flag issues early so rework stays off the shop floor.',
+        title: '200-ton hydraulic presses',
+        description: 'Heavy pressing capacity for dish ends, formed heads, and structural components.',
+        icon: 'tabler:stack-2',
       },
       {
-        title: 'In-house fabrication',
-        description:
-          'Rolling, cutting, welding, and testing all happen under one roof. We do not sub-contract critical operations, which means tighter quality control and faster turnaround.',
+        title: 'TIG / MIG / SMAW welding',
+        description: 'Full welding capability across processes for carbon steel, stainless steel, and alloy materials.',
+        icon: 'tabler:flame',
       },
       {
-        title: 'Conservative execution',
-        description:
-          'We bias toward over-engineering where it matters — weld quality, joint geometry, and surface finish — rather than chasing the cheapest build cost.',
-      },
-    ]}
-  />
-
-  <Features2
-    title="Our facility"
-    tagline="Vadodara, Gujarat"
-    columns={3}
-    items={[
-      {
-        title: '10,000 sq ft shop floor',
-        description: 'Covered fabrication bay with dedicated rolling, welding, and assembly areas.',
-        icon: 'tabler:building-warehouse',
-      },
-      {
-        title: '10-ton EOT crane',
-        description: 'Overhead crane for safe handling of heavy fabrications throughout the shop.',
+        title: '10-ton gantry crane',
+        description: 'Overhead handling throughout the shop floor for safe movement of heavy fabrications.',
         icon: 'tabler:crane',
       },
       {
-        title: 'Allied Pharma Compound, Dabhoi Road',
-        description: 'Zenith School Char Rasta, Pratapnagar, Vadodara. Accessible from Vadodara city with road freight access for dispatch.',
+        title: 'Team of ten',
+        description: 'A small, experienced team with long-standing familiarity with pressure-grade fabrication standards.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Pratapnagar Steel Market',
+        description: 'Pratapnagar, Vadodara — same location since 1957, with road freight access for dispatch.',
         icon: 'tabler:map-pin',
       },
     ]}

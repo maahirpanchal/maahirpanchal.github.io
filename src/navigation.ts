@@ -26,15 +26,13 @@ export const headerData = {
       ],
     },
     {
-      text: 'Request a Quote',
-      href: getPermalink('/pricing'),
-    },
-    {
       text: 'Contact',
       href: '/#contact',
     },
   ],
-  actions: [],
+  actions: [
+    { text: 'Request a Quote', href: getPermalink('/pricing'), variant: 'primary' as const },
+  ],
 };
 
 export const footerData = {

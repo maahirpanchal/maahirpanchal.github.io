@@ -6,56 +6,58 @@ import Steps from '~/components/widgets/Steps.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Request a Quote',
+  title: 'Request a Quotation',
+  description:
+    'Request a fabrication quotation from Arun Iron Works. Submit your drawings, material specifications, and design parameters for a detailed quotation.',
 };
 ---
 
 <Layout metadata={metadata}>
   <HeroText
-    tagline="Quoting"
-    title="Request a Quote"
-    subtitle="We price every job individually based on your drawings, materials, and delivery requirements. There are no fixed catalogues — just a fair price for exactly what you need built."
+    tagline="Quotations"
+    title="Request a Quotation"
+    subtitle="Each enquiry is priced individually on the basis of your drawings, material specifications, and delivery requirements. We do not operate fixed-price catalogues."
   />
 
   <Features3
-    title="What to include in your enquiry"
-    subtitle="The more detail you give us upfront, the faster and more accurate your quote will be."
+    title="Information required with your enquiry"
+    subtitle="Comprehensive enquiry details enable a faster and more accurate quotation."
     columns={3}
     items={[
       {
-        title: 'Drawings or sketches',
+        title: 'Engineering drawings or sketches',
         description:
-          'GA drawings, fabrication drawings, or even a rough sketch with key dimensions. PDF, DWG, or DXF all work.',
+          'GA drawings, fabrication drawings, or dimensioned sketches. Accepted formats: PDF, DWG, or DXF.',
         icon: 'tabler:file-description',
       },
       {
         title: 'Material specification',
         description:
-          'Grade, thickness, and any surface finish requirements. If unsure, tell us the service fluid and operating conditions.',
+          'Grade, thickness, and surface finish requirements. Where undecided, please indicate the service fluid and operating conditions.',
         icon: 'tabler:layers-difference',
       },
       {
         title: 'Design pressure & temperature',
         description:
-          'Required for pressure vessels and heat exchangers. Include both design and operating conditions if known.',
+          'Mandatory for pressure vessels and heat exchangers. Please provide both design and operating conditions where available.',
         icon: 'tabler:gauge',
       },
       {
         title: 'Quantity',
         description:
-          'Number of identical or similar items. Repeat orders often benefit from lower per-unit costs.',
+          'Number of identical or similar items required.',
         icon: 'tabler:number',
       },
       {
-        title: 'Delivery timeline',
+        title: 'Required delivery schedule',
         description:
-          'Your required delivery date or lead time. We will confirm feasibility and flag any constraints upfront.',
+          'Specified delivery date or acceptable lead time. Feasibility will be confirmed and any scheduling constraints communicated at the outset.',
         icon: 'tabler:calendar',
       },
       {
-        title: 'Testing requirements',
+        title: 'Testing & inspection requirements',
         description:
-          'Any NDT, hydrostatic test, or third-party inspection requirements. Helps us plan the build schedule correctly.',
+          'NDT methods, hydrostatic test parameters, or third-party inspection scope, as applicable. Required for accurate build schedule planning.',
         icon: 'tabler:eye-check',
       },
     ]}
@@ -63,48 +65,48 @@ const metadata = {
   />
 
   <Steps
-    title="How quoting works"
-    tagline="our process"
+    title="The quotation process"
+    tagline="Our process"
     isReversed={true}
     items={[
       {
-        title: 'Submit your enquiry',
+        title: 'Enquiry submitted',
         icon: 'tabler:number-1',
       },
       {
-        title: 'We review your drawings and requirements',
+        title: 'Drawings and specifications reviewed',
         icon: 'tabler:number-2',
       },
       {
-        title: 'We raise any technical clarifications',
+        title: 'Technical clarifications raised, if required',
         icon: 'tabler:number-3',
       },
       {
-        title: 'You receive a detailed quotation',
+        title: 'Detailed quotation issued',
         icon: 'tabler:number-4',
       },
       {
-        title: 'Order confirmation and schedule',
+        title: 'Order confirmation and production schedule',
         icon: 'tabler:number-5',
       },
       {
-        title: 'Fabrication begins',
+        title: 'Fabrication commences',
         icon: 'tabler:number-6',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=987&q=80',
+      src: 'https://images.unsplash.com/photo-1581094488379-6a10d04c0f04?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       alt: 'Fabrication shop',
     }}
   />
 
   <CallToAction
-    title="Send us your requirement"
-    subtitle="Email your drawings and specs to arunironworks@outlook.com or use the contact form and we'll get back to you within one business day."
+    title="Submit your requirement"
+    subtitle="Forward your drawings and specifications to arunironworks@outlook.com, or submit via the contact form. All enquiries are responded to within one business day."
     actions={[
       {
         variant: 'primary',
-        text: 'Go to contact form',
+        text: 'Open contact form',
         href: '/contact',
       },
     ]}

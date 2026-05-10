@@ -1,8 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
-import { headerData } from '~/navigation';
 import IndustriesMarquee from '~/components/widgets/IndustriesMarquee.astro';
+import { headerData } from '~/navigation';
 
 import logoONGC from '~/assets/images/client_logos/ongl.jpg';
 import logoInoxCVA from '~/assets/images/client_logos/inoxcva.png.webp';
@@ -14,6 +14,7 @@ import logoWalchandnagar from '~/assets/images/client_logos/walchandnagar.png';
 import logoGSFC from '~/assets/images/client_logos/gsfc.png';
 import logoISRO from '~/assets/images/client_logos/isro.png';
 import logoBARC from '~/assets/images/client_logos/barc.png';
+import imgShellForming from '~/assets/images/shell_forming.jpeg';
 
 const metadata = {
   title: 'Arun Iron Works — Heavy Fabrication & Process Equipment, Vadodara',
@@ -80,7 +81,7 @@ const metadata = {
           { amount: '68+',     label: 'Years in Operation' },
           { amount: '10,000+', label: 'Sq. Ft. Shop Floor' },
           { amount: '10T',     label: 'Max Lift Capacity' },
-          { amount: '8',       label: 'Industries Served' },
+          { amount: '5',       label: 'Industries Served' },
         ].map(({ amount, label }) => (
           <div class="border-t-3 border-accent pt-5">
             <div class="font-heading text-5xl md:text-6xl font-bold text-gray-900 dark:text-white leading-none">
@@ -148,7 +149,7 @@ const metadata = {
           { title: 'Heat Exchangers',   tagline: 'Process Equipment', href: '/services#heat-exchangers',  img: 'https://media.istockphoto.com/id/1207935850/photo/tube-heat-exchanger.jpg?s=612x612&w=0&k=20&c=RodnR9CJptGZomM5A9DXzfHlM8y6aiQEWYttfUqZHSc=' },
           { title: 'Columns & Reactors',tagline: 'Process Equipment', href: '/services#columns-reactors', img: 'https://thumbs.dreamstime.com/b/industrial-columns-2472159.jpg' },
           { title: 'Pharma Equipment',  tagline: 'Pharmaceutical',    href: '/services#pharma-equipment', img: 'https://thumbs.dreamstime.com/b/pharmaceutical-laboratory-equipment-13305275.jpg' },
-          { title: 'Shell Rolling',     tagline: 'Forming',           href: '/services#shell-rolling',    img: 'https://www.nssco.com/assets/images/content/plate_rolling_largecyl.jpg' },
+          { title: 'Shell Rolling',     tagline: 'Forming',           href: '/services#shell-rolling',    img: imgShellForming.src },
         ].map(({ title, tagline, href, img }) => (
           <a href={href} class="card-image group">
             <img

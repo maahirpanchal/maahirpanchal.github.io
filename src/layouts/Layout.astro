@@ -1,7 +1,7 @@
 ---
 import '~/assets/styles/tailwind.css';
 
-import { I18N } from 'astrowind:config';
+import { I18N, SITE } from 'astrowind:config';
 
 import CommonMeta from '~/components/common/CommonMeta.astro';
 import Favicons from '~/components/Favicons.astro';
@@ -36,6 +36,31 @@ const { language, textDirection } = I18N;
     <SiteVerification />
     <Analytics />
 
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': ['Organization', 'LocalBusiness'],
+        name: SITE.name,
+        url: SITE.site,
+        description:
+          'Pressure vessel and heat exchanger manufacturer in Vadodara, Gujarat. Heavy fabrication for pharma, chemicals, fertilizers, and process industries since 1957.',
+        foundingDate: '1957',
+        telephone: '+918849614126',
+        email: 'arunironworks@outlook.com',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Allied Pharma Compound, Dabhoi Road, Pratapnagar',
+          addressLocality: 'Vadodara',
+          addressRegion: 'Gujarat',
+          postalCode: '390004',
+          addressCountry: 'IN',
+        },
+        areaServed: { '@type': 'Country', name: 'India' },
+      })}
+    />
+
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
   </head>
@@ -67,14 +92,17 @@ const { language, textDirection } = I18N;
     </div>
 
     <script>
-      const overlay = document.getElementById('construction-overlay');
-      const dismiss = document.getElementById('construction-dismiss');
-      if (sessionStorage.getItem('construction-dismissed')) {
-        overlay?.remove();
-      }
-      dismiss?.addEventListener('click', () => {
-        sessionStorage.setItem('construction-dismissed', '1');
-        overlay?.remove();
+      document.addEventListener('astro:page-load', () => {
+        const overlay = document.getElementById('construction-overlay');
+        if (!overlay) return;
+        if (sessionStorage.getItem('construction-dismissed')) {
+          overlay.style.display = 'none';
+          return;
+        }
+        document.getElementById('construction-dismiss')?.addEventListener('click', () => {
+          sessionStorage.setItem('construction-dismissed', '1');
+          overlay.style.display = 'none';
+        });
       });
     </script>
   </body>
